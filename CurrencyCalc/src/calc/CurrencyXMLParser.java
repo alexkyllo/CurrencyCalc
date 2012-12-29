@@ -1,7 +1,8 @@
 package calc;
 
 import java.io.*;
-import java.util.HashMap;
+//import java.util.HashMap;
+import java.util.TreeMap;
 
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
@@ -14,7 +15,7 @@ public class CurrencyXMLParser{
 	private XPathFactory factory;
 	private XPath xpath;
 	private XPathExpression expr;
-	public final HashMap<String, Double> currencyhash = new HashMap<String, Double>();
+	public final TreeMap<String, Double> currencyhash = new TreeMap<String, Double>();
 	
 	public CurrencyXMLParser(String uri) {
 		super();
