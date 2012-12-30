@@ -15,12 +15,13 @@ public class CurrencyXMLParser{
 	private XPath xpath;
 	private XPathExpression expr;
 	private TreeMap<String, Double> currencyhash = new TreeMap<String, Double>();
-	private final String uri = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
+	private final String uri = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; //for production
+	//private final String uri = "/Users/kyllo/Downloads/eurofxref-daily.xml"; //for testing
 	
 	public CurrencyXMLParser() {
 		super();
 		try {
-			parse(uri);
+			parseXML(uri);
 		} catch (XPathExpressionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -36,7 +37,7 @@ public class CurrencyXMLParser{
 		}
 	}
 
-	public void parse(String uri) throws ParserConfigurationException, SAXException, 
+	public void parseXML(String uri) throws ParserConfigurationException, SAXException, 
     IOException, XPathExpressionException {
 		domFactory = DocumentBuilderFactory.newInstance();
 		domFactory.setNamespaceAware(true);
@@ -61,4 +62,23 @@ public class CurrencyXMLParser{
 		return currencyhash;
 	}
 	
+	public Double convertCurrency(Double amount1, String currency1, String currency2) {
+		Double result = 0.0;
+		Double rate1 = 0.0;
+		Double rate2 = 0.0;
+		if (currency1 == "EUR"){	
+			rate1 = 1.0;
+		} else {
+			rate1 = currencyhash.get(currency1);	
+		}
+		
+		if (currency2 == "EUR"){
+			rate2 = 1.0;
+		} else {
+			rate2 = currencyhash.get(currency2);
+		}
+		
+		result = amount1 / rate1 * rate2;
+		return result;
+	}
 }

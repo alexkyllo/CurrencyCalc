@@ -1,5 +1,6 @@
 package calc;
 
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -22,29 +23,16 @@ public class CurrencySwingGUI {
 	private JButton button;
 	private JFormattedTextField formattedTextField1;
 	private JFormattedTextField formattedTextField2;
-	private Double amount1 = 0.0;
-	private Double amount2 = 0.0;
+	public Double amount1;
+	public Double amount2;
+	public String currency1;
+	public String currency2;
 
-	/**
-	 * Launch the application.
-	 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CurrencySwingGUI window = new CurrencySwingGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}*/
-
-	/**
-	 * Create the application.
-	 */
 	public CurrencySwingGUI() {
+		amount1 = 0.0;
+		amount2 = 0.0;
+		//currency1 = "USD";
+		//currency2 = "EUR";
 		initialize();
 	}
 
@@ -53,7 +41,8 @@ public class CurrencySwingGUI {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 453, 100);
+		frame.setBounds(100, 100, 453, 90);
+		frame.setMinimumSize(new Dimension(453,90));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new FormLayout(new ColumnSpec[] {
 				FormFactory.LABEL_COMPONENT_GAP_COLSPEC,
@@ -80,6 +69,7 @@ public class CurrencySwingGUI {
 		button = new JButton("<=>");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				//call to parser.convertCurrency(amount1,currency1,currency2); here;
 			}
 		});
 		frame.getContentPane().add(button, "6, 2");
