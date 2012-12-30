@@ -1,7 +1,6 @@
 package calc;
 
 import java.io.*;
-//import java.util.HashMap;
 import java.util.TreeMap;
 
 import org.w3c.dom.*;
@@ -15,10 +14,26 @@ public class CurrencyXMLParser{
 	private XPathFactory factory;
 	private XPath xpath;
 	private XPathExpression expr;
-	public final TreeMap<String, Double> currencyhash = new TreeMap<String, Double>();
+	private TreeMap<String, Double> currencyhash = new TreeMap<String, Double>();
+	private final String uri = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml";
 	
-	public CurrencyXMLParser(String uri) {
+	public CurrencyXMLParser() {
 		super();
+		try {
+			parse(uri);
+		} catch (XPathExpressionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void parse(String uri) throws ParserConfigurationException, SAXException, 
@@ -41,4 +56,9 @@ public class CurrencyXMLParser{
 			i++;
 	    }
 	}
+	
+	public TreeMap<String,Double> getCurrencyList() {
+		return currencyhash;
+	}
+	
 }
