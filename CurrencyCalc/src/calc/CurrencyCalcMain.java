@@ -8,6 +8,8 @@ public class CurrencyCalcMain {
 	/**
 	 * @param args
 	 */
+	private static CurrencyXMLParser parser = new CurrencyXMLParser();
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		 /* //above are for testing 
@@ -30,13 +32,11 @@ public class CurrencyCalcMain {
 	}
 	
 	public static Double convertButtonPressed(Double amount1, String currency1, String currency2) {
-		CurrencyXMLParser parser = new CurrencyXMLParser();
 		Double result = parser.convertCurrency(amount1,currency1,currency2);
 		return result;
 	}
 	
 	public static Object[] getCurrencyArray() {
-		CurrencyXMLParser parser = new CurrencyXMLParser();
 		Set<String> currencyset = parser.getCurrencyList().keySet();
 		return currencyset.toArray();
 	}
