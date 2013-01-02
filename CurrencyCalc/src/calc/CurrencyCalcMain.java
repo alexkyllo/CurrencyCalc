@@ -1,6 +1,6 @@
 package calc;
 
-import java.util.TreeMap;
+import java.util.Set;
 
 
 public class CurrencyCalcMain {
@@ -10,22 +10,35 @@ public class CurrencyCalcMain {
 	 */
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
+		 /* //above are for testing 
 		CurrencyXMLParser parser = new CurrencyXMLParser();
 		TreeMap<String,Double> currencylist = parser.getCurrencyList();
 		System.out.println(currencylist.toString());
-		
 		System.out.println(parser.convertCurrency(1.0, "USD", "CNY"));
 		System.out.println(parser.convertCurrency(1.0, "CNY", "USD"));
 		System.out.println(parser.convertCurrency(1.0, "EUR", "CNY"));
-		System.out.println(parser.convertCurrency(1.0, "CNY", "EUR"));
+		System.out.println(parser.convertCurrency(1.0, "CNY", "EUR")); 
 		
-		/*java.awt.EventQueue.invokeLater(new Runnable() {
+		*/
+		
+		java.awt.EventQueue.invokeLater(new Runnable() {
 			public void run() {
 					CurrencySwingGUI window = new CurrencySwingGUI();
 					window.setFrameVisible();
 			}
-		});*/
+		});
 	}
 	
+	public static Double convertButtonPressed(Double amount1, String currency1, String currency2) {
+		CurrencyXMLParser parser = new CurrencyXMLParser();
+		Double result = parser.convertCurrency(amount1,currency1,currency2);
+		return result;
+	}
+	
+	public static Object[] getCurrencyArray() {
+		CurrencyXMLParser parser = new CurrencyXMLParser();
+		Set<String> currencyset = parser.getCurrencyList().keySet();
+		return currencyset.toArray();
+	}
 
 }

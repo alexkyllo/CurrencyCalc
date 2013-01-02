@@ -15,8 +15,10 @@ public class CurrencyXMLParser{
 	private XPath xpath;
 	private XPathExpression expr;
 	private TreeMap<String, Double> currencyhash = new TreeMap<String, Double>();
-	private final String uri = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; //for production
-	//private final String uri = "/Users/kyllo/Downloads/eurofxref-daily.xml"; //for testing
+	//private final String uri = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; //for production
+	private final String uri = "/Users/kyllo/Downloads/eurofxref-daily.xml"; //for testing
+	/*note: write method to create a local cache of xml source and update daily 
+	so that the class doesn't have to fire an http request for every conversion*/
 	
 	public CurrencyXMLParser() {
 		super();
@@ -54,6 +56,7 @@ public class CurrencyXMLParser{
 	        String currencycode = nodes.item(i).getNodeValue();
 	        Double exrate = Double.valueOf(nodes.item(i+1).getNodeValue());
 			currencyhash.put(currencycode, exrate);
+			currencyhash.put("EUR", 1.00);
 			i++;
 	    }
 	}
@@ -78,7 +81,7 @@ public class CurrencyXMLParser{
 			rate2 = currencyhash.get(currency2);
 		}
 		
-		result = amount1 / rate1 * rate2;
+		result = Math.floor(amount1 / rate1 * rate2 * 100) / 100 ;
 		return result;
 	}
 }
