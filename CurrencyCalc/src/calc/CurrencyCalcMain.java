@@ -12,15 +12,15 @@ public class CurrencyCalcMain {
 	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		 /* //above are for testing 
+		 /*
 		CurrencyXMLParser parser = new CurrencyXMLParser();
 		TreeMap<String,Double> currencylist = parser.getCurrencyList();
-		System.out.println(currencylist.toString());
+		
+		System.out.println(getCurrencyArray().toString());
 		System.out.println(parser.convertCurrency(1.0, "USD", "CNY"));
 		System.out.println(parser.convertCurrency(1.0, "CNY", "USD"));
 		System.out.println(parser.convertCurrency(1.0, "EUR", "CNY"));
 		System.out.println(parser.convertCurrency(1.0, "CNY", "EUR")); 
-		
 		*/
 		
 		java.awt.EventQueue.invokeLater(new Runnable() {

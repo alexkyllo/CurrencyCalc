@@ -30,10 +30,7 @@ public class CurrencyXMLParser{
 	private XPath xpath;
 	private XPathExpression expr;
 	private TreeMap<String, Double> currencyhash = new TreeMap<String, Double>();
-	//private final String url = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; //for production
-	private final String url = "/Users/kyllo/Downloads/eurofxref-daily.xml"; //for testing
-	/*note: write method to create a local cache of xml source and update daily 
-	so that the class doesn't have to fire an http request for every conversion*/
+	private final String url = "http://www.ecb.europa.eu/stats/eurofxref/eurofxref-daily.xml"; //for production
 	private String cacheFileName = System.getProperty("java.io.tmpdir") + "ExchangeRates.xml";
 	private File cacheFile;
 	private boolean cacheFileExists = false;
