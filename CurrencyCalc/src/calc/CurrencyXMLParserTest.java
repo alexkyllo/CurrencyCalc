@@ -3,8 +3,7 @@ package calc;
 import static org.junit.Assert.*;
 import java.util.*;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.BeforeClass;
 import org.junit.AfterClass;
 import org.junit.Test;
@@ -13,7 +12,7 @@ import org.junit.Test;
 
 public class CurrencyXMLParserTest {
 
-	private static TreeMap<String, Long> currencyhash;
+	private static TreeMap<String, Double> currencyhash;
 	private static CurrencyXMLParser parser;
 
 	@BeforeClass 
@@ -33,7 +32,7 @@ public class CurrencyXMLParserTest {
 
 	@Test
 	public void testConvertCurrency() {
-		assertTrue(parser.convertCurrency(1.0,"EUR","CNY") == (Math.round(currencyhash.get("CNY") * 100)/100));
+		assertTrue(parser.convertCurrency(1.0,"EUR","CNY") == (Math.floor(currencyhash.get("CNY") * 100)/100));
 	}
 
 }
