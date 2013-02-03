@@ -1,7 +1,10 @@
 CurrencyCalc
 ============
 
-Java classes and Swing GUI for currency conversion
+Java classes and Swing GUI for currency conversion.
+
+This program is merely an exercise in learning Java Swing with Google WindowBuilder.
+Note that due to floating-point rounding, the currency conversions may be off by about 1/100.
 
 Copyright (C) 2013  Jeffrey Alexander Kyllo
 
